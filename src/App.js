@@ -2,14 +2,12 @@ import React, {Component} from 'react';
 import './App.css';
 
 import {connect} from 'react-redux';
-import {setUsers} from './redux/users/actions'
-
-import usersMock from './mocks/users.json'
+import {fetchUsers} from './redux/users/actions'
 
 class App extends Component {
 
   getUsers = () => {
-    this.props.setUsers(usersMock);
+    this.props.fetchUsers();
   }
 
   render() {
@@ -27,7 +25,7 @@ class App extends Component {
 const mapStateToProps = ({users}) => ({users: users.list, loading: users.loading})
 
 const mapDispatchToProps = {
-  setUsers
+  fetchUsers
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
