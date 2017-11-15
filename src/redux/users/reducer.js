@@ -1,4 +1,4 @@
-import {SET_USERS, ADD_USERS} from './constants'
+import {FETCH_USERS_START, FETCH_USERS_END} from './constants'
 
 const INITIAL_STATE = {
   list: [],
@@ -8,23 +8,16 @@ const INITIAL_STATE = {
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case 'SET_USERS':
+    case FETCH_USERS_START:
       return {
         ...state,
+        loading: true
+      }
+    case FETCH_USERS_END:
+      return {
+        ...state,
+        loading: false,
         list: action.payload
-      }
-    case 'ADD_USER':
-      return {
-        ...state,
-        list: [
-          ...state.users,
-          action.payload
-        ]
-      }
-    case 'SET_LOADING':
-      return {
-        ...state,
-        loading: action.payload
       }
     default:
       return state;

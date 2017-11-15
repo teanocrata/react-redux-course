@@ -1,19 +1,14 @@
 import {
-  SET_USERS,
-  ADD_USER,
-  SET_LOADING} from './constants'
+  FETCH_USERS_START,
+  FETCH_USERS_END} from './constants'
 import api from '../../api'
-
-export const setUsers = (users => ({type: SET_USERS, payload: users}));
-
-export const addUser = (users => ({type: ADD_USER, payload: users}));
-
-export const setLoading = (loading => ({type: SET_LOADING, payload: loading}));
 
 export const fetchUsers = () => async (dispatch,
 /* , getState */) => {
-  dispatch(setLoading(true));
+  dispatch(fetchUsersStart());
   const data = await api.fetchUsers();
-  dispatch(setUsers(data));
-  dispatch(setLoading(false));
+  dispatch(fetchUsersEnd(data));
 };
+
+export const fetchUsersStart = () => ({type: FETCH_USERS_START});
+export const fetchUsersEnd = (user) => ({type: FETCH_USERS_END, payload: user});
