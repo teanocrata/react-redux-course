@@ -11,14 +11,18 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <h1>My redux first app!</h1>
-        <button onClick={this.getUsers}>Get users</button>
-        <ul>
-          {this.props.users.map((user) => <li key={user.id}>{user.name}</li>)}
-        </ul>
-      </div>);
+    return (<div className="App">
+      <h1>My redux first app!</h1>
+      <button onClick={this.getUsers}>Get users</button>
+      {
+        this.props.loading
+          ? <span>Loading...</span>
+          : <ul>
+              {this.props.users.map((user) => <li key={user.id}>{user.name}</li>)}
+            </ul>
+      }
+
+    </div>);
   }
 }
 
