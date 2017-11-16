@@ -1,7 +1,7 @@
 import {
   FETCH_USERS_START,
   FETCH_USERS_END} from './constants'
-import api from '../../api'
+import api from 'api'
 
 export const fetchUsers = () => async (dispatch,
 /* , getState */) => {

@@ -1,4 +1,4 @@
-import usersMock from '../mocks/users.json'
+import usersMock from 'mocks/users.json'
 
 const api = {
   fetchUsers() {

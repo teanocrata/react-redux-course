@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.css'
 
+import { connect } from 'react-redux';
+import {removeTask} from 'redux/tasks/actions';
+
 const priorityClassName = [
   "task-item--high",
   "task-item--medium",
@@ -13,6 +16,7 @@ const TaskItem = ({name, priority, owner}) => (
     <div>
       <div>{name} - <span>( {priority} )</span></div>
       <div>{owner}</div>
+      <button>🗑</button>
     </div>
   </div>
 )
@@ -26,5 +30,5 @@ TaskItem.propTypes = {
 TaskItem.defaultProps = {
   priority: 0
 }
-
-export default TaskItem;
+const mapDefaultToProps = { removeTask };
+export default connect(null, mapDefaultToProps)(TaskItem);

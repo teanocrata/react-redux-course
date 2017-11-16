@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import TaskList from '../Tasks/TaskList'
-import TaskForm from '../Tasks/TaskForm'
+import TaskList from 'components/Tasks/TaskList'
+import TaskForm from 'components/Tasks/TaskForm'
 import PropTypes from 'prop-types'
 
 import {connect} from 'react-redux';
