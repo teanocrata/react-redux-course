@@ -3,7 +3,7 @@ import {
   REMOVE_TASK}
 from './constants'
 
-let id = 0;
+let id = 3;
 
 // const generatedId = ((first) => () => first++)(0)
 

@@ -1,7 +1,9 @@
 import {ADD_TASK, REMOVE_TASK} from './constants'
 
+import taskMock from 'mocks/tasks';
+
 const INITIAL_STATE = {
-  list: []
+  list: taskMock
 }
 
 export default function reducer(state = INITIAL_STATE, action) {
