@@ -6,7 +6,12 @@ import TaskItem from './TaskItem'
 const TaskList = ({tasks}) => (
   <TransitionGroup component="ul" className='task-list'>
     {
-      tasks.map((task) => <li id={task.id}><TaskItem {...task}/></li>)
+      tasks.map((task) =>
+      <CSSTransition key={task.id} timeout={200} classNames="fade">
+        <li>
+          <TaskItem {...task}/>
+        </li>
+      </CSSTransition>)
     }
   </TransitionGroup>
 )

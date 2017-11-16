@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux';
 
 class TodoListPage extends Component {
+  componentDidCatch(error, description){console.log(description);}
   render() {
     return (<div>
       <TaskList tasks={this.props.tasks}/>
