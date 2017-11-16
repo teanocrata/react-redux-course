@@ -1,13 +1,14 @@
 import React from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import PropTypes from 'prop-types'
 import TaskItem from './TaskItem'
 
 const TaskList = ({tasks}) => (
-  <ul className='task-list'>
+  <TransitionGroup component="ul" className='task-list'>
     {
       tasks.map((task) => <li id={task.id}><TaskItem {...task}/></li>)
     }
-  </ul>
+  </TransitionGroup>
 )
 
 TaskList.propTypes = {

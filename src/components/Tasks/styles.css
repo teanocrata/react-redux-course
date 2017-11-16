@@ -1,0 +1,11 @@
+.task-item--high {
+  background-color: red;
+}
+
+.task-item--medium {
+  background-color: blue;
+}
+
+.task-item--low {
+  background-color: yellow;
+}

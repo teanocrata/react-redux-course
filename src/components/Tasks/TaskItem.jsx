@@ -1,8 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import './styles.css'
+
+const priorityClassName = [
+  "task-item--high",
+  "task-item--medium",
+  "task-item--low"
+]
 
 const TaskItem = ({name, priority, owner}) => (
-  <div className="task-item">
+  <div className={`task-item ${priorityClassName[priority]}`}>
     <div>
       <div>{name} - <span>( {priority} )</span></div>
       <div>{owner}</div>
