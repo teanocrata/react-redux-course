@@ -2,7 +2,7 @@ import {normalize} from 'normalizr'
 import taskListSchema from 'schemas/task';
 import merge from 'lodash/fp/merge'
 
-import {MERGE_ENTITIES, REMOVE_TASK} from './constants'
+import {MERGE_ENTITIES, REMOVE_ENTITY} from './constants'
 
 import taskMock from 'mocks/tasks.json';
 const normalizedData = normalize(taskMock, taskListSchema);
@@ -19,10 +19,11 @@ export default function reducer(state = INITIAL_STATE, action) {
         tasks: merge(action.payload, state.tasks),
         result: [...state.result, action.entityId]
       };
-    case REMOVE_TASK:
-      return {
-        list: state.list.filter(task => task.id !== action.payload)
-      }
+    case REMOVE_ENTITY:
+      const newState = {...state};
+      delete newState[action.payload.entity][action.payload.id]
+      newState.result = newState.result.filter(id => id !== action.payload.id);
+      return newState;
     default:
       return state;
   }

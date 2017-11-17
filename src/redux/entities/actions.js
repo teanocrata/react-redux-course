@@ -1,7 +1,4 @@
-import {
-  MERGE_ENTITIES,
-  REMOVE_TASK}
-from './constants'
+import {MERGE_ENTITIES, REMOVE_ENTITY} from './constants'
 
 let taskId = 3;
 
@@ -21,4 +18,9 @@ export const addTask = (task) => {
   }
 };
 
-export const removeTask = (taskId) => ({type: REMOVE_TASK, payload: taskId});
+export const removeTask = (taskId) => ({
+  type: REMOVE_ENTITY,
+  payload: {
+    id: taskId, entity: 'tasks'
+  }
+});
