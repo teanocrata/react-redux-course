@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.css'
+import { Link } from 'react-router-dom'
 
 import {connect} from 'react-redux';
 import {removeTask} from 'redux/entities/actions';
@@ -8,12 +9,12 @@ import {removeTask} from 'redux/entities/actions';
 const priorityClassName = ["task-item--high", "task-item--medium", "task-item--low"]
 
 const TaskItem = ({id, name, priority, owner, removeTask}) => (<div className={`task-item ${priorityClassName[priority]}`}>
-  <div>
-    <div>{name}
+  <div to={`/tasks/${id}`}>
+    <Link to={`/tasks/${id}`}>{name}
       -
       <span>( {priority}
         )</span>
-    </div>
+    </Link>
     <div>{owner}</div>
     <button onClick={()=>removeTask(id)} className="task-item__btn">🗑</button>
   </div>
