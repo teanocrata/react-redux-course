@@ -1,19 +1,24 @@
 import {
-  ADD_TASK,
+  MERGE_ENTITIES,
   REMOVE_TASK}
 from './constants'
 
-let id = 3;
+let taskId = 3;
 
 // const generatedId = ((first) => () => first++)(0)
 
 export const addTask = (task) => {
+  const id = taskId++;
   return {
-    type: ADD_TASK,
+    type: MERGE_ENTITIES,
+    entityId: id,
     payload: {
-      id: id++,
-      ...task
+      [id]: {
+        id,
+        ...task
+      }
     }
   }
 };
+
 export const removeTask = (taskId) => ({type: REMOVE_TASK, payload: taskId});
