@@ -4,11 +4,11 @@ import PropTypes from 'prop-types'
 import TaskItem from './TaskItem'
 
 const TaskList = ({tasks}) => (
-  <TransitionGroup component="ul" className='task-list'>
+  <TransitionGroup component="ul" className='task-list  w3-ul'>
     {
       tasks.map((task) =>
       <CSSTransition key={task.id} timeout={200} classNames="fade">
-        <li>
+        <li className="w3-card">
           <TaskItem {...task}/>
         </li>
       </CSSTransition>)

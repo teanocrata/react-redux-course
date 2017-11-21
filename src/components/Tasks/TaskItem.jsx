@@ -4,11 +4,11 @@ import './styles.css'
 import { Link } from 'react-router-dom'
 
 import {connect} from 'react-redux';
-import {removeTask} from 'redux/entities/actions';
+import {openModal} from 'redux/modal/actions';
 
 const priorityClassName = ["task-item--high", "task-item--medium", "task-item--low"]
 
-const TaskItem = ({id, name, priority, owner, removeTask}) => (<div className={`task-item ${priorityClassName[priority]}`}>
+const TaskItem = ({id, name, priority, owner, openModal}) => (<div className={`task-item ${priorityClassName[priority]}`}>
   <div to={`/tasks/${id}`}>
     <Link to={`/tasks/${id}`}>{name}
       -
@@ -16,7 +16,7 @@ const TaskItem = ({id, name, priority, owner, removeTask}) => (<div className={`
         )</span>
     </Link>
     <div>{owner}</div>
-    <button onClick={()=>removeTask(id)} className="task-item__btn">🗑</button>
+    <button onClick={()=>openModal('RemoveTaskDialog', {taskId: id})} className="task-item__btn w3-btn">🗑</button>
   </div>
 </div>)
 
@@ -25,13 +25,13 @@ TaskItem.propTypes = {
   name: PropTypes.string.isRequired,
   priority: PropTypes.number,
   owner: PropTypes.string.isRequired,
-  removeTask: PropTypes.func.isRequired
+  openModal: PropTypes.func.isRequired
 }
 
 TaskItem.defaultProps = {
   priority: 0
 }
 const mapDefaultToProps = {
-  removeTask
+  openModal
 };
 export default connect(null, mapDefaultToProps)(TaskItem);
